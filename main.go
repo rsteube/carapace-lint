@@ -31,9 +31,11 @@ func main() {
 		ast.Inspect(f, func(node ast.Node) bool {
 			switch n := node.(type) {
 			case *ast.CallExpr:
+				fmt.Println("=== CAllExpr")
 				fmt.Println(n.Fun) // prints every func call expression
 
 				if fun, ok := n.Fun.(*ast.SelectorExpr); ok {
+					fmt.Println("=== SelectorExpr")
 					fmt.Println(fun.Sel.Name)
 					fmt.Println(fun.Sel.String())
 				}
